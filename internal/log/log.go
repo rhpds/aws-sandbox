@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"io/ioutil"
+	"go.uber.org/zap"
 )
 
 // Err stderr logger
@@ -15,6 +16,8 @@ var Debug *log.Logger
 // Report stdout logger
 var Report *log.Logger
 
+// Zap logger
+var Logger *zap.Logger
 
 // InitLoggers sets logger
 func InitLoggers(debugFlag bool) {
@@ -26,4 +29,7 @@ func InitLoggers(debugFlag bool) {
 		Debug = log.New(ioutil.Discard, "(d) ", log.LstdFlags)
 	}
 	Report = log.New(os.Stdout, "+++ ", log.LstdFlags)
+
+	Logger, _ = zap.NewProduction()
+	defer Logger.Sync()
 }

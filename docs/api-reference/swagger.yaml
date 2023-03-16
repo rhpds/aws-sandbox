@@ -379,10 +379,6 @@ components:
       items:
         anyOf:
           - $ref: '#/components/schemas/AwsCredential'
-      discriminator:
-        propertyName: credential_type
-        mapping:
-          aws: '#/components/schemas/AwsCredential'
 
     AwsAccount:
       type: object
