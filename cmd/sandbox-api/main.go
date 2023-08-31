@@ -153,7 +153,7 @@ func main() {
 	// Create AWS STS client
 	worker := NewWorker(*baseHandler)
 
-	go worker.WatchLifecycleDBChannels(context.Background())
+	go worker.WatchLifecycleDBChannels()
 
 	// ---------------------------------------------------------------------
 	// Middlewares
